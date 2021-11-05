@@ -16,13 +16,13 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 <table>
-<?php foreach ($results as $row): ?>
   <tr>
     <th>Name</th>
     <th>Continent</th>
     <th>Independence</th>
     <th>Head of State</th>
   </tr>
+  <?php foreach ($results as $row): ?>
   <tr>
     <td><?= $row['name']; ?></td>
     <td><?= $row['continent']; ?> </td>
