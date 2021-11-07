@@ -14,12 +14,12 @@ $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $p
 
 if ($context == 'cities'){
   $headers = ['Name', 'District', 'Population'];
-  $rows = ['name', 'district', 'population'];
+  $database_names = ['name', 'district', 'population'];
   $stmt = $conn->query("SELECT cities.name, cities.district, cities.population FROM cities JOIN countries ON cities.country_code = countries.code WHERE countries.name LIKE '%$country%'");
 }
 else{
   $headers = ['Name', 'Continent', 'Independence Year', 'Head of State'];
-  $rows = ['name', 'continent', 'independence_year', 'head_of_state'];
+  $database_names = ['name', 'continent', 'independence_year', 'head_of_state'];
   $stmt = $conn->query("SELECT * FROM countries WHERE name LIKE '%$country%'");
 }
 
@@ -37,7 +37,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </tr>
   <?php foreach ($results as $row): ?>
   <tr>
-    <?php foreach ($rows as $filler): ?>
+    <?php foreach ($database_names as $filler): ?>
     <td><?= $row[$filler]; ?></td>
     <?php endforeach; ?>
   </tr>
